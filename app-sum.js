@@ -10,13 +10,16 @@ app.use(bodyParser.json());
 
 app.use(serveStatic("public"));
 
-app.post("/calculation", function(request, response){
+app.post("/calculate", function(request, response){
     
     var n1 = request.body.firstNumber;
+    var n2 = request.body.secondNumber;
+    var calc = n1 + n2;
     
-    console.log(n1);
+    var obj = {result:calc};
     
-    response.json(n1);
+    
+    response.json(obj);
     
 });
 
