@@ -43,12 +43,14 @@
             $.ajax("calculate", {
                 type: "post",
                 contentType: 'application/json',
-                data: JSON.stringify(reqData)
-            }, function(data) {
-                this.setState({
-                    result: result
-                });
-            },"json");
+                data: JSON.stringify(reqData),
+                success: function(data) {
+                    console.log("data.result = ", data.result);
+                    this.setState({
+                        result: data.result
+                    });
+                }.bind(this)
+            });
 
         },
         render: function () {
