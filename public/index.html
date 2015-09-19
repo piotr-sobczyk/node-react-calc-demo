@@ -45,7 +45,6 @@
                 contentType: 'application/json',
                 data: JSON.stringify(reqData),
                 success: function(data) {
-                    console.log("data.result = ", data.result);
                     this.setState({
                         result: data.result
                     });
