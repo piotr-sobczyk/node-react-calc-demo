@@ -18,6 +18,7 @@
   "homepage": "https://github.com/piotr-sobczyk/node-react-calc-demo#readme",
   "dependencies": {
     "body-parser": "^1.14.0",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "serve-static": "^1.10.0"
   }
 }
