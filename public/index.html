@@ -6,7 +6,6 @@
     <script src="lib/react.js"></script>
     <script src="lib/JSXTransformer.js"></script>
     <script src="lib/jquery-1.11.3.js"></script>
-    <script src="script.js"></script>
 </head>
 <body>
 <div id="content"></div>
@@ -35,15 +34,18 @@
         calculate: function () {
             var firstNumInt = parseInt(this.state.firstNumber);
             var secondNumInt = parseInt(this.state.secondNumber);
-            var result = firstNumInt + secondNumInt;
 
-//            $.get("calculate", function(data) {
-//                console.log("received data: ", data);
-//            });
+            var reqData = {
+                firstNumber: firstNumInt,
+                secondNumber: secondNumInt
+            };
 
-            this.setState({
-                result: result
+            $.post("calculate", reqData, function(data) {
+                this.setState({
+                    result: result
+                });
             });
+
         },
         render: function () {
             return (
