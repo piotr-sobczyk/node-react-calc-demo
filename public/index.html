@@ -40,11 +40,15 @@
                 secondNumber: secondNumInt
             };
 
-            $.post("calculate", reqData, function(data) {
+            $.ajax("calculate", {
+                type: "post",
+                contentType: 'application/json',
+                data: JSON.stringify(reqData)
+            }, function(data) {
                 this.setState({
                     result: result
                 });
-            });
+            },"json");
 
         },
         render: function () {
