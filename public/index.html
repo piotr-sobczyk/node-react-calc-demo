@@ -3,10 +3,71 @@
 <head>
     <meta charset="utf-8">
     <title>Calculator</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="lib/react.js"></script>
+    <script src="lib/JSXTransformer.js"></script>
+    <script src="lib/jquery-1.11.3.js"></script>
     <script src="script.js"></script>
 </head>
 <body>
-    <div>Hello world!</div>
+<div id="content"></div>
+<script type="text/jsx">
+    var Calculator = React.createClass({
+        getInitialState: function () {
+            return {
+                firstNumber: null,
+                secondNumber: null,
+                result: null
+            }
+        },
+
+        firstNumChanged: function (evt) {
+            this.setState({
+                firstNumber: evt.target.value
+            });
+        },
+
+        secondNumChanged: function (evt) {
+            this.setState({
+                secondNumber: evt.target.value
+            });
+        },
+
+        calculate: function () {
+            var firstNumInt = parseInt(this.state.firstNumber);
+            var secondNumInt = parseInt(this.state.secondNumber);
+            var result = firstNumInt + secondNumInt;
+
+//            $.get("calculate", function(data) {
+//                console.log("received data: ", data);
+//            });
+
+            this.setState({
+                result: result
+            });
+        },
+        render: function () {
+            return (
+                    <div>
+                        <h1>Calculator</h1>
+                        <label>First number</label>
+                        <input ref="firstNumber" onChange={this.firstNumChanged} type="number"></input>
+                        <br/>
+                        <label>Second number</label>
+                        <input ref="secondNumber" onChange={this.secondNumChanged} type="number"></input>
+                        <br/>
+                        <button onClick={this.calculate}>Calculate!</button>
+                        <br/>
+                        <br/>
+                        <span>Result: {this.state.result}</span>
+                    </div>
+            );
+        }
+    });
+
+    React.render(
+            <Calculator/>,
+            document.getElementById('content')
+    );
+</script>
 </body>
 </html>
